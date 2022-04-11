@@ -12,6 +12,11 @@ __pycache__
 *iframe_figures
 *iframe_figures/
 
+# CSV
+*.csv
+
+*lesson.ipynb
+
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
 # website: http://jupyter.org/
