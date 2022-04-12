@@ -111,24 +111,26 @@ def get_stores_df(use_cache=True):
     
     return stores_df
 
-def get_stores_df(use_cache=True):
+# assuming stores is supposed to just be ten rows, moving forward.
+def get_sales_df(use_cache=True):
     '''
     This function creates a request from the REST API at https://api.data.codeup.com/api/v1/stores
     and transforms the response into a pandas dataframe named items. It then saves the data as a csv file.
     '''
     # If the cached parameter is True, read the csv file on disk in the same folder as this file 
-    if os.path.exists('stores_df.csv') and use_cache:
+    if os.path.exists('sales_df.csv') and use_cache:
         print('Using cached CSV')
-        return pd.read_csv('stores_df.csv')
+        return pd.read_csv('sales_df.csv')
    
     print('CSV not present, initializating acquisition')
     
     # create the empty list which will be appended with data with each iteration 
-    store_list = []
-    print('Creating store list')
+    sales_list = []
+    print('Creating sales list')
+    
     # define the url from where the data is stored
     domain = 'https://python.zgulde.net'
-    endpoint = '/api/v1/stores'
+    endpoint = '/api/v1/sales'
     url = domain + endpoint
 
     # define the response by the request
@@ -150,20 +152,23 @@ def get_stores_df(use_cache=True):
         # convert response to json
         data = response.json()
         #create the variable to hold the items returned from the response
-        page_stores = data['payload']['stores']
+        page_sales = data['payload']['sales']
         # add the items from the page to the items list and continue to iterate through n pages
-        page_stores = store_list.extend(data['payload']['stores'])
+        page_sales = sales_list.extend(data['payload']['sales'])
         
     print('iteration complete, creating CSV')
         # Create a dataframe of the items_list that now hold all the items from all pages
         
-    stores_df = pd.DataFrame(store_list)
+    sales_df = pd.DataFrame(sales_list)
+    # Noticed some keys need to be fixed
+    #sales_df.rename(columns={'item':'item_id','store':'store_id'},inplace=True)
+    sales_df = sales_df.rename(columns={'item':'item_id','store':'store_id'})
         
-    stores_df.to_csv('stores_df.csv', index=False)
+    sales_df.to_csv('sales_df.csv', index=False)
     
     print('DataFrame available for use')
     
-    return stores_df
+    return sales_df
 
 def get_combined_df(use_cache=True):
     '''
