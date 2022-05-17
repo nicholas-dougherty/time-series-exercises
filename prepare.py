@@ -1,19 +1,21 @@
+#                                                                                                                                                         
+# `7MM"""Mq.`7MM"""Mq. `7MM"""YMM  `7MM"""Mq.   db     `7MM"""Mq. `7MM"""YMM  
+#   MM   `MM. MM   `MM.  MM    `7    MM   `MM. ;MM:      MM   `MM.  MM    `7  
+#   MM   ,M9  MM   ,M9   MM   d      MM   ,M9 ,V^MM.     MM   ,M9   MM   d    
+#   MMmmdM9   MMmmdM9    MMmmMM      MMmmdM9 ,M  `MM     MMmmdM9    MMmmMM    
+#   MM        MM  YM.    MM   Y  ,   MM      AbmmmqMA    MM  YM.    MM   Y  , 
+#   MM        MM   `Mb.  MM     ,M   MM     A'     VML   MM   `Mb.  MM     ,M 
+# .JMML.    .JMML. .JMM.JMMmmmmMMM .JMML. .AMA.   .AMMA.JMML. .JMM.JMMmmmmMMM                                                                                                              
+#------------------------------------------------------------------------------|
 import numpy as np
 import pandas as pd
-
-# datetime utilities
 from datetime import timedelta, datetime
-
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-# no yelling in the library
 import warnings
 warnings.filterwarnings("ignore")
-
 import acquire as get
-
-
+#------------------------------------------------------------------------------|
 def prepare_store_data():
     df = get.get_store_item_demand_data()
     
@@ -30,7 +32,7 @@ def prepare_store_data():
     df['sales_total'] = df.sale_amount * df.item_price
     
     return df
-
+#------------------------------------------------------------------------------|
 def prepare_opsd_data(): 
     df = get.get_opsd_data()
     
@@ -48,3 +50,6 @@ def prepare_opsd_data():
     df = df.fillna('0')
     
     return df
+#------------------------------------------------------------------------------|
+#------------------------------------------------------------------------------|
+#------------------------------------------------------------------------------|

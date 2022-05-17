@@ -1,11 +1,18 @@
+#    ___  _________  __  _________  ____
+#   / _ |/ ___/ __ \/ / / /  _/ _ \/ __/
+#  / __ / /__/ /_/ / /_/ // // , _/ _/  
+# /_/ |_\___/\___\_\____/___/_/|_/___/  
+#------------------------------------------------------------------------------|                                      
 import pandas as pd
 import requests
 import os
-
+#------------------------------------------------------------------------------|
 def get_items_df(use_cache=True):
     '''
-    This function creates a request from the REST API at https://api.data.codeup.com/api/v1/stores
-    and transforms the response into a pandas dataframe named items. It then saves the data as a csv file.
+    This function creates a request from the REST API at
+    https://api.data.codeup.com/api/v1/stores
+    and transforms the response into a pandas dataframe named items.
+    It then saves the data as a csv file.
     '''
     # If the cached parameter is True, read the csv file on disk in the same folder as this file 
     if os.path.exists('items_df.csv') and use_cache:
@@ -55,12 +62,14 @@ def get_items_df(use_cache=True):
     print('DataFrame available for use')
     
     return items_df
-
+#------------------------------------------------------------------------------|
 
 def get_stores_df(use_cache=True):
     '''
-    This function creates a request from the REST API at https://api.data.codeup.com/api/v1/stores
-    and transforms the response into a pandas dataframe named items. It then saves the data as a csv file.
+    This function creates a request from the REST API at
+    https://api.data.codeup.com/api/v1/stores
+    and transforms the response into a pandas dataframe named items.
+    It then saves the data as a csv file.
     '''
     # If the cached parameter is True, read the csv file on disk in the same folder as this file 
     if os.path.exists('stores_df.csv') and use_cache:
@@ -110,7 +119,7 @@ def get_stores_df(use_cache=True):
     print('DataFrame available for use')
     
     return stores_df
-
+#------------------------------------------------------------------------------|
 # assuming stores is supposed to just be ten rows, moving forward.
 def get_sales_df(use_cache=True):
     '''
@@ -169,7 +178,7 @@ def get_sales_df(use_cache=True):
     print('DataFrame available for use')
     
     return sales_df
-
+#------------------------------------------------------------------------------|
 def get_combined_df(use_cache=True):
     '''
     This function creates a request from the REST API at https://api.data.codeup.com/api/v1/stores
@@ -210,3 +219,6 @@ def get_combined_df(use_cache=True):
     combined_df.to_csv('sales_stores_items.csv')
     
     return combined_df
+#------------------------------------------------------------------------------|
+#------------------------------------------------------------------------------|
+#------------------------------------------------------------------------------|
